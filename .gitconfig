@@ -1,3 +1,7 @@
+[user]
+    name = Drew Wells
+    email = drew.wells00@gmail.com
+
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -161,9 +165,6 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
-[user]
-    name = Drew Wells
-    email = drew.wells00@gmail.com
 [alias]
     browse = !sh -c 'hub browse WhaleShark/RetailMeNot'
     gui = !sh -c '/usr/local/git/libexec/git-core/git-gui'
