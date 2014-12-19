@@ -161,3 +161,110 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[user]
+    name = Drew Wells
+    email = drew.wells00@gmail.com
+[alias]
+    browse = !sh -c 'hub browse WhaleShark/RetailMeNot'
+    gui = !sh -c '/usr/local/git/libexec/git-core/git-gui'
+    br = branch -v
+    bc = branch -v --contains
+    co = checkout
+    st = status -sb
+    ss = show --stat
+    c  = cherry -v
+    cp = cherry-pick
+    l = log --no-merges
+    lr = log --reverse
+    ls = log --stat=,80 --no-merges
+    lc = log -1
+    la = log -6
+    lg = log --graph --abbrev-commit --date=relative
+    lga = log --graph -10
+    lgfp = log --graph --first-parent
+    lo = log --pretty=one
+    lp = log --pretty=format:\"%h %s\" --graph --color
+    ds = diff --stat
+    dt = difftool
+    d = diff -w
+    dc = diff -w --cached
+    df = !sh -c 'git d $1^! -- $2' -
+    dr = !sh -c 'git d `cat .git/rebase-merge/stopped-sha`^! -- $1' -
+    rc = rebase --continue
+    whale = !sh -c 'git clone git@github.com:WhaleShark/$1 $2' -
+    jira = !sh -c 'git log -1 $1 --pretty=stash' -
+    puppet = !sh -c 'git log -1 $1 --pretty=puppet' -
+    cn = !sh -c 'git jira $1| pbcopy' -
+    pf = !sh -c 'git push --no-verify'
+    pp = !sh -c 'git puppet $1| pbcopy' -
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+    irm = #!sh -c "git ignore $(git st --short | grep '^ D' | sed 's/^ D //')"
+    mt = mergetool
+    #gl = !sh -c 'git log -i --pretty=format:\"http://github.com/whaleshark/retailmenot/commit/%h : %s\" --grep=$1' -
+    gl = !sh -c 'git log -i --pretty=format:\"https://stash.rmn.com/projects/RMN/repos/retailmenot/commits/%h : %s\" --grep=$1' -
+    up = !sh -c 'git fetch && git rebase -p && git new' -
+    new = !sh -c 'git ls $1@{1}..$1@{0} \"$@\"' -
+    nd = !sh -c 'git ds $1@{1}..$1@{0} \"$@\"' -
+    force = !sh -c 'git fetch && git reset --hard origin/${1:-$(git rev-parse --abbrev-ref HEAD)}' -
+    f = force
+    as = !sh -c 'git diff -w --no-color "$@" | git apply --cached --ignore-whitespace' -
+
+[apply]
+    whitespace = nowarn
+[branch]
+    autosetuprebase = always
+[core]
+    excludesfile = /Users/drew/Emacs.gitignore
+    editor = emacsclient -t
+    #editor = nano
+    ignorecase = true
+    whitespace = =
+    deltaBaseCacheLimit = 1G
+    pager = less -+S
+[diff]
+    tool = p4mergetool
+    rename = 6940
+[merge]
+	tool = p4mergetool
+[mergetool "custom"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$PWD/$BASE\"" "\"$PWD/$REMOTE\"" "\"$PWD/$LOCAL\"" "\"$PWD/$MERGED\""
+	keepTemporaries = false
+	trustExitCode = false
+	keepBackup = false
+[clean]
+    requireForce = false
+[push]
+    default = tracking
+[pretty]
+    stash = format:https://stash.rmn.com/projects/RMN/repos/retailmenot/commits/%h%n{noformat}%h %B%n{noformat}
+    jira = format:https://github.com/WhaleShark/RetailMeNot/commit/%h%n{noformat}%h %B%n{noformat}
+    puppet = format:https://github.com/WhaleShark/puppet/commit/%h%n%h %B%n
+[format]
+    pretty = format:%C(red)%h%Creset%C(blue)%d%Creset %s %C(green)(%an)%Creset %cn %C(cyan)%ar%Creset
+[achievement]
+    upload = false
+[color]
+    ui = auto
+[github]
+    user   = drewwells
+    token  = 6791eae0efd22d05a3d298a9ce3806cc
+[rerere]
+    enabled    = true
+    autoupdate = true
+[gui]
+	fontdiff = -family \"Ubuntu Mono\" -size 13 -weight normal -slant roman -underline 0 -overstrike 0
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+[mergetool]
+	keepBackup = false
+[mergetool "p4merge"]
+	cmd = p4merge $BASE $LOCAL $REMOTE $MERGED
+[difftool "p4merge"]
+	cmd = p4merge $BASE $LOCAL $REMOTE $MERGED
+[difftool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
