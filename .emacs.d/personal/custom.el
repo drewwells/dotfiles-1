@@ -21,6 +21,7 @@
  '(js2-strict-trailing-comma-warning nil)
  '(js2-strict-var-hides-function-arg-warning nil)
  '(magit-use-overlays nil)
+ '(markdown-indent-on-enter nil)
  '(scss-compile-at-save nil)
  '(setq indent-tabs-mode t)
  '(web-mode-code-indent-offset 4)
