@@ -248,3 +248,7 @@
 	cmd = p4merge $BASE $LOCAL $REMOTE $MERGED
 [difftool "p4mergetool"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f

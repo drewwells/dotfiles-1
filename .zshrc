@@ -13,6 +13,7 @@ ZSH_THEME="candy"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#fpath=$(~/code/dotfiles-1/completions $fpath)
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -33,13 +34,12 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git github)
 
 alias docker="/usr/local/bin/docker --tls"
 alias njs="cd ~/work/tools/node-rmn"
 alias vc="cd /Volumes/Development/dev/vouchercodes"
 alias rmn="cd ~/work/rmn"
-alias pt="/Users/drew/go/bin/pt --nogroup"
 alias rmnup="docker run -dt -v /Users/drew/work/rmn/:/var/lib/wsm/retailmenot -p 80:80 10.128.25.163/rmn"
 alias rmnc="docker create --name rmn -t -v /Users/drew/work/rmn:/var/lib/wsm/retailmenot -p 80:80 rmn_web"
 alias rmnmem="docker exec -it rmn killall memcached && memcached -d -u root"
@@ -53,20 +53,21 @@ alias idea='open -b com.jetbrains.intellij'
 alias buildserver='ssh -f -N -L 8000:localhost:8080 -L 2700:localhost:27017 buildserver'
 alias containercleandocker='docker rm `docker ps --no-trunc -a -q`'
 alias imagecleandocker='docker rmi `docker images -q --filter "dangling=true"`'
-alias mt='git co test; git pull; git merge -'
+alias mt='git co develop; git pull; git merge -'
 # emacs aliases
 # alias emacs='emacsclient -n $*'
 alias ed='emacs --daemon'
 alias e='emacsclient -t'
 alias ec='open -a /Applications/Emacs.app $@'
 alias watch='fswatch -0 ~/work/rmn/www/gui/sass |  xargs -0 -n 1 -I {} sprite -gen ~/work/rmn/www/gui/build/im -b ~/work/rmn/www/gui/build/css/ -p ~/work/rmn/www/gui/sass -d ~/work/rmn/www/gui/im/sass ~/work/rmn/www/gui/sass/_pages/home.scss'
+alias wadmin='fswatch go run *.go -devmode run'
 
 #alias git='nocorrect git'
 source $ZSH/oh-my-zsh.sh
 alias ick='ack -i --pager="less -R -S"'
 
 # Customize to your needs...
-PATH=/usr/local/go/bin:/usr/local/sbin:$PATH
+PATH=/usr/local/sbin:$PATH
 
 # Load RVM into a shell session *as a function*
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
@@ -84,7 +85,7 @@ export GOPATH=$HOME
 export GOBIN=$GOPATH/bin
 export CDPATH=$CDPATH:$GOPATH/src/github.com
 
-PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 #DOCKER
 export DOCKER_CERT_PATH=/Users/drew/.boot2docker/certs/boot2docker-vm
@@ -110,4 +111,18 @@ export KUBERNETES_PROVIDER=vagrant
 export SASS_SPEC_PATH=/Users/drew/code/sass-spec
 export SASS_SASSC_PATH=/Users/drew/code/sassc
 export SASS_LIBSASS_PATH=/Users/drew/code/libsass
-export RMN_BASE_PATH=~/Dropbox/rmn
+export RMN_BASE_PATH=~/work/rmn
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+#STACKENGINE
+export SE_AWS_IMAGE_ID="ami-44d4a92c"
+
+#override with hub
+#eval "$(hub alias -s)"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/drew/opt/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables bash completion for gcloud.
+source '/Users/drew/opt/google-cloud-sdk/completion.zsh.inc'
