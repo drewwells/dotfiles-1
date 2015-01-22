@@ -110,4 +110,4 @@ export KUBERNETES_PROVIDER=vagrant
 export SASS_SPEC_PATH=/Users/drew/code/sass-spec
 export SASS_SASSC_PATH=/Users/drew/code/sassc
 export SASS_LIBSASS_PATH=/Users/drew/code/libsass
-export RMN_BASE_PATH=~/work/rmn
+export RMN_BASE_PATH=~/Dropbox/rmn

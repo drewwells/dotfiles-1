@@ -128,13 +128,14 @@
 # URL shorthands
 
 [url "git@github.com:"]
+    insteadOf = https://github.com/
 
+[url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
-
 	insteadOf = "github:"
 
 [url "git@gist.github.com:"]
@@ -148,7 +149,7 @@
 	insteadOf = "gist:"
 [alias]
     browse = !sh -c 'hub browse WhaleShark/RetailMeNot'
-    gui = !sh -c '/usr/local/git/libexec/git-core/git-gui'
+    gui = !sh -c '/usr/local/Cellar/git/2.2.1/libexec/git-core/git-gui'
     co = checkout
     st = status -sb
     ss = show --stat
